@@ -34,7 +34,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  pull-requests: read # allows SonarQube to decorate PRs with analysis results
+  pull-requests: read
 
 jobs:
   Analysis:
@@ -47,7 +47,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10'  # Specify your Python version here
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
@@ -57,15 +57,15 @@ jobs:
       - name: Run SonarQube analysis
         uses: SonarSource/sonarqube-scan-action@v1.1.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on SonarQube
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}   # URL of your SonarQube instance
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
             -Dsonar.projectKey=thrivetalk
             -Dsonar.sources=.
             -Dsonar.projectBaseDir=.
             -Dsonar.tests=tests
-            -Dsonar.python.coverage.reportPaths=coverage.xml  # Path to your coverage report if applicable
-            -Dsonar.python.xunit.reportPaths=test-results.xml  # Path to your test results if applicable
+            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.python.xunit.reportPaths=test-results.xml
             -Dsonar.verbose=true
