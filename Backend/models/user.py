@@ -1,6 +1,5 @@
 from Backend.core.interfaces.interfaces import IUser
 
-
 class User(IUser):
     def __init__(self, user_id, username, email, password):
         self.user_id = user_id
@@ -16,7 +15,7 @@ class User(IUser):
         # Implémentation pour créer un nouvel utilisateur
         pass
 
-    def update(self, **kwargs):
+    def update(self, user_id, user):
         # Implémentation pour mettre à jour un utilisateur par son ID
         pass
 
