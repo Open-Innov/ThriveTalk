@@ -11,11 +11,10 @@ on:
     secrets:
         # SonarQube token
         SONAR_TOKEN:
-            required: true
+            required: false
            
 env: 
     PYTHON_VERSION: '3.10'
-    SONAR_VERSION: '4.6.2+2472'
 
 
 permissions:
@@ -57,10 +56,3 @@ jobs:
       run: |
         pytest
         
-
-    - name: Run SonarQube analysis
-      uses: GitHubActions/sonar-scanner@stable
-      with:
-        scanner-version: '${{ env.SONAR_VERSION }}'
-        sonar-properties: 'sonar-project.properties'
-        sonar-token : ${{ secrets.SONAR_TOKEN }}
