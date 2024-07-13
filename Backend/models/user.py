@@ -1,5 +1,6 @@
 from Backend.core.interfaces.interfaces import IUser
 
+
 class User(IUser):
     def __init__(self, user_id, username, email, password):
         self.user_id = user_id
