@@ -42,9 +42,9 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
         with:
-          directory: ./coverage/reports/
+          directory: ./coverage/reports/   # Assurez-vous que les rapports sont bien ici
           fail_ci_if_error: true
-          files: ./coverage1.xml,./coverage2.xml,!./cache
+          files: ./coverage.xml,!./cache   # Assurez-vous de spécifier correctement le fichier XML généré
           flags: unittests
           name: codecov-umbrella
           verbose: true
